@@ -1,0 +1,47 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "public": "../public/",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "authentication": {
+    "entity": "user",
+    "service": "user",
+    "secret": "BOO7GPoZxSiQh2SKJi0viiRnmxc=",
+    "authStrategies": [
+      "jwt",
+      "local"
+    ],
+    "jwtOptions": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "usernameField": "email",
+      "passwordField": "password"
+    },
+    "oauth": {
+      "redirect": "/",
+      "google": {
+        "key": "<google oauth key>",
+        "secret": "<google oauth secret>",
+        "scope": [
+          "email",
+          "profile",
+          "openid"
+        ]
+      }
+    }
+  },
+  "postgres": {
+    "client": "pg",
+    "connection": "postgres://nubavwjl:rb7WrFUbMEZ4c7bkpk4iTO2oECnbhb6q@tai.db.elephantsql.com/nubavwjl"
+  }
+}
