@@ -9,8 +9,7 @@
     "feathers"
   ],
   "author": {
-    "name": "Sandeep kadam",
-    "email": ""
+    "name": "Sandeep kadam"
   },
   "contributors": [],
   "bugs": {},
@@ -50,6 +49,7 @@
     "@feathersjs/transport-commons": "^4.5.11",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "feathers-objection": "^7.5.1",
     "helmet": "^4.6.0",
     "knex": "^0.95.14",

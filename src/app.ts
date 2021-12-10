@@ -4,6 +4,7 @@ import compress from 'compression';
 import helmet from 'helmet';
 import cors from 'cors';
 
+import dotenv from 'dotenv';
 import feathers from '@feathersjs/feathers';
 import configuration from '@feathersjs/configuration';
 import express from '@feathersjs/express';
@@ -25,6 +26,7 @@ const app: Application = express(feathers());
 export type HookContext<T = any> = { app: Application } & FeathersHookContext<T>;
 
 // Load app configuration
+dotenv.config();
 app.configure(configuration());
 // Enable security, CORS, compression, favicon and body parsing
 app.use(helmet({
