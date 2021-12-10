@@ -15,7 +15,7 @@ class User extends Model {
   static get jsonSchema(): JSONSchema {
     return {
       type: 'object',
-      required: ['email', 'password'],
+      required: ['email'],
 
       properties: {
         first_name: { type: 'string' },
@@ -25,7 +25,7 @@ class User extends Model {
         avatar: { type: 'string' },
 
         googleId: { type: 'string' },
-        githubId: { type: 'string' },
+        githubId: { type: 'integer' },
 
       }
     };
@@ -51,11 +51,11 @@ export default function (app: Application): typeof User {
         table.string('first_name', 255);
         table.string('last_name', 255);
         table.string('email', 255).notNullable().unique();
-        table.string('password', 255).notNullable();
+        table.string('password', 255);
         table.string('avatar');
 
         table.string('googleId');
-        table.string('githubId');
+        table.bigInteger('githubId');
 
         table.timestamp('created_at');
         table.timestamp('updated_at');

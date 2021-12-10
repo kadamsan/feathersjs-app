@@ -39,8 +39,8 @@
         ]
       },
       "github": {
-        "key": "<GITHUB_CLIENT_ID>",
-        "secret": "<GITHUB_CLIENT_SECRET>"
+        "key": "37826be6fe7b860f7247",
+        "secret": "936e1da77be775e860630b900a8ba4f517c5cfed"
       }
     }
   },
