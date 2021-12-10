@@ -5,8 +5,8 @@ import { Knex } from 'knex';
 import { Application } from '../declarations';
 
 class User extends Model {
-  createdAt!: string;
-  updatedAt!: string;
+  created_at!: string;
+  updated_at!: string;
 
   static get tableName(): string {
     return 'fe_user';
@@ -15,46 +15,50 @@ class User extends Model {
   static get jsonSchema(): JSONSchema {
     return {
       type: 'object',
-      required: ['first_name', 'last_name', 'email', 'password'],
+      required: ['email', 'password'],
 
       properties: {
         first_name: { type: 'string' },
         last_name: { type: 'string' },
         email: { type: 'string' },
         password: { type: 'string' },
-        
+        avatar: { type: 'string' },
+
         googleId: { type: 'string' },
-      
+        githubId: { type: 'string' },
+
       }
     };
   }
 
   $beforeInsert(): void {
-    this.createdAt = this.updatedAt = new Date().toISOString();
+    this.created_at = this.updated_at = new Date().toISOString();
   }
 
   $beforeUpdate(): void {
-    this.updatedAt = new Date().toISOString();
+    this.updated_at = new Date().toISOString();
   }
 }
 
 export default function (app: Application): typeof User {
   const db: Knex = app.get('knex');
 
-  db.schema.hasTable('user').then(exists => {
+  db.schema.hasTable(User.tableName).then(exists => {
     if (!exists) {
-      db.schema.createTable('user', table => {
+      db.schema.createTable(User.tableName, table => {
         table.increments('id');
-      
-        table.string('first_name', 255).notNullable();
-        table.string('last_name', 255).notNullable();
+
+        table.string('first_name', 255);
+        table.string('last_name', 255);
         table.string('email', 255).notNullable().unique();
         table.string('password', 255).notNullable();
-        
+        table.string('avatar');
+
         table.string('googleId');
-      
-        table.timestamp('createdAt');
-        table.timestamp('updatedAt');
+        table.string('githubId');
+
+        table.timestamp('created_at');
+        table.timestamp('updated_at');
       })
         .then(() => console.log('Created user table')) // eslint-disable-line no-console
         .catch(e => console.error('Error creating user table', e)); // eslint-disable-line no-console

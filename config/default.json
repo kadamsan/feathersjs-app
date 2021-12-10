@@ -7,7 +7,7 @@
     "max": 50
   },
   "authentication": {
-    "entity": "user",
+    "entity": "fe_user",
     "service": "user",
     "secret": "BOO7GPoZxSiQh2SKJi0viiRnmxc=",
     "authStrategies": [
@@ -37,11 +37,19 @@
           "profile",
           "openid"
         ]
+      },
+      "github": {
+        "key": "<GITHUB_CLIENT_ID>",
+        "secret": "<GITHUB_CLIENT_SECRET>"
       }
     }
   },
   "postgres": {
     "client": "pg",
-    "connection": "postgres://nubavwjl:rb7WrFUbMEZ4c7bkpk4iTO2oECnbhb6q@tai.db.elephantsql.com/nubavwjl"
+    "connection": "postgres://nubavwjl:rb7WrFUbMEZ4c7bkpk4iTO2oECnbhb6q@tai.db.elephantsql.com/nubavwjl",
+    "pool": {
+      "min": 2,
+      "max": 10
+    }
   }
 }
