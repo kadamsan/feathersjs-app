@@ -10,7 +10,6 @@ import configuration from '@feathersjs/configuration';
 import express from '@feathersjs/express';
 import socketio from '@feathersjs/socketio';
 
-
 import { Application } from './declarations';
 import logger from './logger';
 import middleware from './middleware';
@@ -20,6 +19,7 @@ import channels from './channels';
 import { HookContext as FeathersHookContext } from '@feathersjs/feathers';
 import authentication from './authentication';
 import objection from './objection';
+import redis from './redis';
 // Don't remove this comment. It's needed to format import lines nicely.
 
 const app: Application = express(feathers());
@@ -45,6 +45,7 @@ app.configure(express.rest());
 app.configure(socketio());
 
 app.configure(objection);
+app.configure(redis);
 
 // Configure other middleware (see `middleware/index.ts`)
 app.configure(middleware);

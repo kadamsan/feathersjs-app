@@ -4,6 +4,7 @@ import { LocalStrategy } from '@feathersjs/authentication-local';
 import { expressOauth, OAuthProfile, OAuthStrategy } from '@feathersjs/authentication-oauth';
 
 import { Application } from './declarations';
+import { RedisAuthenticationService } from './redis-authentication';
 
 declare module './declarations' {
   interface ServiceTypes {
@@ -41,7 +42,7 @@ class GoogleStrategy extends OAuthStrategy {
 }
 
 export default function(app: Application): void {
-  const authentication = new AuthenticationService(app);
+  const authentication = new RedisAuthenticationService(app);
 
   authentication.register('jwt', new JWTStrategy());
   authentication.register('local', new LocalStrategy());
