@@ -20,7 +20,6 @@ export default (options = {}): Hook => {
   return async (context: HookContext): Promise<HookContext> => {
     const { email } = context.data;
     context.data.avatar = gravatarImage(email);
-    console.info('context -> ', context.data);
     return context;
   };
 };

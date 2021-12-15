@@ -20,13 +20,13 @@ describe('authentication', () => {
     });
 
     it('authenticates user and creates accessToken', async () => {
-      const { user, accessToken } = await app.service('authentication').create({
+      const { fe_user, accessToken } = await app.service('authentication').create({
         strategy: 'local',
         ...userInfo
       }, {});
       
       expect(accessToken).toBeTruthy();
-      expect(user).toBeTruthy();
+      expect(fe_user).toBeTruthy();
     });
   });
 });
